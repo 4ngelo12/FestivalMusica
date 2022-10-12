@@ -1,23 +1,2 @@
-document.addEventListener('DOMContentLoaded', function () {
-    iniciarApp();
-})
-
-function iniciarApp() {
-    crearGaleria();
-}
-
-function crearGaleria() {
-    const galeria = document.querySelector('.galeria-img');
-
-    for (let i = 1; i >= 12; i++) {
-        const img = document.createElement('picture');
-        img.innerHTML = `
-            <source srcset="build/img/imagen_vocalista.avif" type="image/avif">
-            <source srcset="build/img/imagen_vocalista.webp" type="image/webp">
-            <img loading="lazy" width="200" height="300" src="build/img/imagen_vocalista.jpg"
-                alt="Imagen de volcalista">
-        `
-
-        galeria.appendChild(img);
-    }
-}
+function iniciarApp(){navFija(),crearGaleria(),scrollNav()}function navFija(){const e=document.querySelector(".header"),t=document.querySelector(".sobre-festival"),n=document.querySelector("body");window.addEventListener("scroll",(function(){t.getBoundingClientRect().top<0?(e.classList.add("fijo"),n.classList.add("body-scroll")):(e.classList.remove("fijo"),n.classList.remove("body-scroll"))}))}function scrollNav(){document.querySelectorAll(".navegacion-principal a").forEach(e=>{e.addEventListener("click",(function(e){e.preventDefault();const t=e.target.attributes.href.value;document.querySelector(t).scrollIntoView({behavior:"smooth"})}))})}function crearGaleria(){const e=document.querySelector(".galeria-img");for(let t=1;t<=12;t++){const n=document.createElement("picture");n.innerHTML=`\n            <source srcset="build/img/thumb/${t}.avif" type="image/avif">\n            <source srcset="build/img/thumb/${t}.webp" type="image/webp">\n            <img loading="lazy" width="200" height="300" src="build/img/thumb/${t}.jpg"\n                alt="Imagen de volcalista">\n        `,n.onclick=function(){mostrarImg(t)},e.appendChild(n)}}function mostrarImg(e){const t=document.createElement("picture");t.innerHTML=`\n        <source srcset="build/img/grande/${e}.avif" type="image/avif">\n        <source srcset="build/img/grande/${e}.webp" type="image/webp">\n        <img loading="lazy" width="200" height="300" src="build/img/grande/${e}.jpg"\n            alt="Imagen de volcalista">\n    `;const n=document.createElement("DIV");n.appendChild(t),n.classList.add("overlay"),n.onclick=function(){const e=document.querySelector("body");e.appendChild(n),e.classList.remove("fijar-body"),n.remove()};const o=document.createElement("P");o.textContent="X",o.classList.add("btn-cerrarModal"),o.onclick=function(){const e=document.querySelector("body");e.appendChild(n),e.classList.remove("fijar-body"),n.remove()},n.appendChild(o);const c=document.querySelector("body");c.appendChild(n),c.classList.add("fijar-body")}document.addEventListener("DOMContentLoaded",(function(){iniciarApp()}));
+//# sourceMappingURL=app.js.map
